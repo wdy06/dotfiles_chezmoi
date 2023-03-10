@@ -242,8 +242,11 @@ colorssh() {
     fi
     ssh $*
 }
+
+{{ if (eq .chezmoi.hostname "CMQ0TM6WH2") }}
 tab-reset
 alias ssh="colorssh"
+{{ end }}
 
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
@@ -268,7 +271,6 @@ if [ -f ~/.bashrc_work ]
 then
   source ~/.bashrc_work
 fi
-
 
 
 
