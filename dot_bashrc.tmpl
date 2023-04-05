@@ -265,7 +265,7 @@ export PATH="$PATH:${HOME}/go/bin"
 . "$HOME/.asdf/completions/asdf.bash"
 
 # github copilot cli
-if [[ -x `which colordiff` ]]; then
+if [[ -x `which github-copilot-cli` ]]; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
 
