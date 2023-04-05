@@ -269,6 +269,7 @@ if [[ -x `which colordiff` ]]; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
 
+alias awsp='export AWS_PROFILE=$(sed -n "s/\[\(profile \)\?\|\]//gp" ~/.aws/config | fzf)'
 
 if [ -f ~/.env ]
 then
