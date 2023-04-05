@@ -267,6 +267,8 @@ export PATH="$PATH:${HOME}/go/bin"
 # github copilot cli
 if [[ -x `which colordiff` ]]; then
   eval "$(github-copilot-cli alias -- "$0")"
+fi
+
 
 if [ -f ~/.env ]
 then
@@ -277,6 +279,4 @@ if [ -f ~/.bashrc_work ]
 then
   source ~/.bashrc_work
 fi
-
-
 
