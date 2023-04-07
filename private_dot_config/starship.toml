@@ -24,9 +24,13 @@ symbol = " "
 symbol = " "
 
 [directory]
+truncation_length = 100
+truncate_to_repo = false
+truncation_symbol = "…/"
 read_only = " "
 
 [docker_context]
+format = ''
 symbol = " "
 
 [elixir]
@@ -119,6 +123,7 @@ Unknown = " "
 Windows = " "
 
 [package]
+format = ''
 symbol = " "
 
 [pijul_channel]
