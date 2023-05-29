@@ -263,6 +263,9 @@ export PATH="$PATH:${HOME}/.local/bin"
 # for go bin
 export PATH="$PATH:${HOME}/go/bin"
 
+#for krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # for asdf
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
