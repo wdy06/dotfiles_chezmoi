@@ -275,7 +275,11 @@ if [[ -x `which github-copilot-cli` ]]; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
 
+{{if eq .chezmoi.os "darwin"}}
+alias awsp='export AWS_PROFILE=$(sed -nE "s/\[(profile )?([^]]+)\]/\2/p" ~/.aws/config | fzf)'
+{{else}}
 alias awsp='export AWS_PROFILE=$(sed -n "s/\[\(profile \)\?\|\]//gp" ~/.aws/config | fzf)'
+{{end}}
 
 if [ -f ~/.env ]
 then
@@ -287,5 +291,3 @@ then
   source ~/.bashrc_work
 fi
 
-# starship
-eval "$(starship init bash)"
