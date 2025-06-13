@@ -140,7 +140,9 @@ alias dc='docker-compose'
 alias k='kubectl'
 
 # aws
-alias lls='aws s3 ls '
+lls() {
+    s5cmd ls "$@"
+}
 
 # bat
 if [ -x "$(command -v bat)" ]; then
@@ -293,3 +295,28 @@ fi
 
 # starship
 eval "$(starship init bash)"
+
+# s5cmd autocompletion
+_s5cmd_cli_bash_autocomplete() {
+	if [[ "${COMP_WORDS[0]}" != "source" ]]; then
+		COMPREPLY=()
+		local opts cur cmd
+		cur="${COMP_WORDS[COMP_CWORD]}"
+		cmd="${COMP_LINE:0:$COMP_POINT}"
+		[ "${COMP_LINE:COMP_POINT-1:$COMP_POINT}" == " " ] \
+			&& cmd="${cmd} ''" 
+		opts=$($cmd --generate-bash-completion)
+
+		while IFS='' read -r line;
+		do
+			COMPREPLY+=("$line");
+		done \
+		< <(compgen -o bashdefault -o default -o nospace -W "${opts}" -- "${cur}")
+
+		return 0
+	fi
+}
+
+complete -o nospace -F _s5cmd_cli_bash_autocomplete s5cmd
+complete -o nospace -F _s5cmd_cli_bash_autocomplete lls
+
